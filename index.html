@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Соня, с 8 Марта!</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Базовые стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff0f5;
+            color: #5a3e36;
+        }
+
+        /* Шапка */
+        .header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.header-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-width: 90%;
+    margin: 0 auto;
+    border: 2px solid #ffffff;
+}
+
+h1 {
+    color: #ff69b4 !important;
+    margin: 0 0 20px 0;
+    font-size: 3.5em !important;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header-content {
+        padding: 20px;
+        width: 90%;
+    }
+    
+    h1 {
+        font-size: 2em !important;
+    }
+    }
+    .certificate {
+        width: 95%;
+        padding: 20px;
+    }
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 10px;
+    }
+    
+    .gallery-item {
+        aspect-ratio: 4/3;
+    }
+}
+
+/* Дополнительные декорации */
+.gallery-section {
+    position: relative;
+    padding: 50px 0;
+}
+
+.gallery-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #fff0f5 0%, #ffffff 100%);
+    z-index: -1;
+}
+    }
+/* Исправления для сертификата */
+.certificate {
+    background: #fff5ee url('assets/parchment-texture.jpg');
+    transform: none; /* Убираем 3D-трансформации */
+    margin: 50px auto;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 2px solid #ff69b4;
+    position: relative;
+}
+
+/* Новый дизайн секций */
+section {
+    background: linear-gradient(45deg, #fff5f5, #fff0f0);
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 1200px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    position: relative;
+    border: 1px solid rgba(255,105,180,0.1);
+}
+
+/* Адаптация волнообразных разделителей */
+.wave-divider {
+    height: 60px;
+    background-size: cover;
+    opacity: 0.5;
+}
+
+/* Исправление галереи */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    aspect-ratio: 1/1;
+    transition: transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.05);
+}
+
+/* Анимации для появления */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Кнопка воспроизведения */
+.btn-play {
+    background: #ff69b4;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(255,105,180,0.3);
+    transition: all 0.3s;
+}
+
+.btn-play:hover {
+    background: #ff1493;
+    transform: translateY(-2px);
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header class="header">
+    <video muted loop playsinline>
+        <source src="assets/sonya.mp4" type="video/mp4">
+    </video>
+    <div class="header-content">
+        <h1>Соня, с 8 Марта!</h1>
+        <button class="btn-play" onclick="playVideo()">▶ Смотреть поздравление</button>
+    </div>
+    </header>
+    <div class="wave-divider"></div>
+    <!-- Основной текст -->
+    <section class="poem">
+        <!-- Заменить текст -->
+        <h2>Дорогая Соня!</h2>
+        <p>Ты — воплощение весенней нежности,<br>
+        Источник света, тепла и свежести.<br>
+        Пусть этот день подарит тебе радость,<br>
+        И жизнь наполнится любовью и сладостью!</p>
+    </section>
+
+    <!-- Галерея -->
+    <section class="gallery-section">
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="assets/photo1.jpg" alt="Соня 1" class="gallery-img">
+        </div>
+        <div class="gallery-item">
+            <img src="assets/photo2.jpg" alt="Соня 2" class="gallery-img">
+        </div>
+        <div class="gallery-item">
+            <img src="assets/photo3.jpg" alt="Соня 3" class="gallery-img">
+        </div>
+    </div>
+</section>
+    <div class="wave-divider" style="transform: rotate(180deg);"></div>
+    <!-- Сертификат -->
+    <section class="certificate">
+        <h2>Сертификат на исполнение 3 желаний</h2>
+        <ul>
+            <li>1 желание</li>
+            <li>2 желание</li>
+            <li>3 желание</li>
+        </ul>
+        <a href="assets/certificate.pdf" download class="btn">Скачать PDF</a>
+    </section>
+
+    <!-- Музыка -->
+    <section class="music">
+        <h2>Наш саундтрек</h2>
+        <div class="audio-player">
+            <!-- Заменить треки -->
+            <div class="track">
+                <audio controls>
+                    <source src="assets/song1.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+            <!-- Добавить остальные треки -->
+        </div>
+    </section>
+
+    <script>
+        // Анимация появления блоков
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Воспроизведение видео
+        function playVideo() {
+            const video = document.querySelector('video');
+            video.play();
+            video.controls = true;
+        }
+
+        // Генерация PDF
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            doc.setFontSize(22);
+            doc.text('Сертификат на исполнение желаний', 15, 20);
+            doc.setFontSize(16);
+            doc.text('1. Персональный день релакса', 15, 40);
+            doc.text('2. Романтический ужин на выбор', 15, 50);
+            doc.text('3. Путешествие мечты', 15, 60);
+            
+            doc.save('certificate.pdf');
+        }
+    </script>
+    <!-- Подключить библиотеку для PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Добавить перед закрывающим тегом body -->
+    <script>
+    // Генерация летающих сердечек
+    function createHearts() {
+        const container = document.createElement('div');
+        container.className = 'decorative-hearts';
+        
+        for(let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            container.appendChild(heart);
+        }
+        
+        document.body.appendChild(container);
+    }
+    
+    createHearts();
+    </script>
+    <script>
+function playVideo() {
+    const video = document.querySelector('video');
+    const headerContent = document.querySelector('.header-content');
+    
+    video.style.zIndex = '2'; // Перемещаем видео поверх текста при воспроизведении
+    headerContent.style.opacity = '0'; // Скрываем текст при воспроизведении
+    video.controls = true;
+    video.play();
+    
+    // Возвращаем текст после окончания видео
+    video.onended = function() {
+        video.style.zIndex = '1';
+        headerContent.style.opacity = '1';
+    }
+}
+    </script>
+    <script>
+        // Интерактивные искры при движении мыши
+        document.addEventListener('mousemove', (e) => {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = e.pageX + 'px';
+            sparkle.style.top = e.pageY + 'px';
+            document.getElementById('interactiveZone').appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 1000);
+        });
+
+        // Анимация при клике
+        document.addEventListener('click', (e) => {
+            const hearts = ['❤', '💖', '💝', '🎀'];
+            const heart = document.createElement('div');
+            heart.className = 'heart-pulse';
+            heart.style.position = 'absolute';
+            heart.style.left = e.pageX + 'px';
+            heart.style.top = e.pageY + 'px';
+            heart.style.fontSize = '30px';
+            heart.style.color = '#ff69b4';
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 2000);
+        });
+
+        // Параллакс-эффект
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            document.querySelector('.header-content').style.transform = 
+                `translate(${x}px, ${y}px)`;
+        });
+    </script>
+    <div class="sparkles-container">
+    <div class="sparkle" style="left: 10%; animation-delay: 1s"></div>
+    <div class="sparkle" style="left: 30%; animation-delay: 3s"></div>
+    <div class="sparkle" style="left: 50%; animation-delay: 5s"></div>
+    <div class="sparkle" style="left: 70%; animation-delay: 2s"></div>
+    <div class="sparkle" style="left: 90%; animation-delay: 4s"></div>
+</div>
+<script>
+function playVideo() {
+    const video = document.querySelector('video');
+    const header = document.querySelector('.header');
+    
+    video.style.zIndex = '4'; // Поднимаем видео над затемнением
+    header.classList.add('video-active');
+    video.controls = true;
+    video.play();
+    
+    video.onended = function() {
+        header.classList.remove('video-active');
+        video.style.zIndex = '1';
+    }
+}
+</script>
+
+<style>
+/* Дополнения для активного видео */
+.video-active .header-content {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.video-active::after {
+    background: rgba(0,0,0,0.5);
+}
+</style>
+<style>
+    .sparkles-container {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 999;
+    }
+
+    .sparkle {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: radial-gradient(circle, #fff 20%, #ff69b4 70%);
+        border-radius: 50%;
+        filter: blur(2px);
+        animation: sparkleJump 3s infinite;
+    }
+
+    @keyframes sparkleJump {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        50% { transform: translateY(-100px) scale(1.5); opacity: 1; }
+        100% { transform: translateY(-200px) scale(0); opacity: 0; }
+    }
+</style>
+</body>
+</html>

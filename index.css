@@ -1,0 +1,219 @@
+<style>
+    /* Дополнения к CSS */
+    :root {
+        --pink: #fff0f5;
+        --gold: #ffd700;
+        --rose: #ff69b4;
+        --dark-pink: #db7093;
+    }
+
+    /* Анимации */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+    .header video {
+    border: 3px solid white;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+}
+    .header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 2;
+    }
+    /* Общие стили */
+    body {
+        background: linear-gradient(45deg, var(--pink), #ffffff);
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    body:before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" font-family="Arial" font-size="20" fill="rgba(255,105,180,0.1)" text-anchor="middle">❤</text></svg>');
+        z-index: -1;
+        opacity: 0.3;
+    }
+
+    /* Шапка */
+    .header-content {
+        background: radial-gradient(circle, rgba(255,240,245,0.3) 0%, rgba(255,240,245,0.1) 100%);
+        backdrop-filter: blur(5px);
+        padding: 30px;
+        border-radius: 20px;
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+    }
+    .header-content::before {
+    content: '🎀';
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    font-size: 50px;
+    transform: rotate(-15deg);
+}
+
+.header-content::after {
+    content: '🌸';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    font-size: 50px;
+    transform: rotate(15deg);
+}
+    h1 span {
+    animation: glitter 2s linear infinite;
+    }
+
+    @keyframes glitter {
+    0% { text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+    50% { text-shadow: 0 0 30px rgba(255,105,180,0.9); }
+    100% { text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+    }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+h1 {
+    font-family: 'Playfair Display', serif;
+}
+
+    /* Галерея */
+    .gallery img {
+        border: 3px solid white;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.05) rotate(-2deg);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        z-index: 2;
+    }
+
+    /* Сертификат */
+    .certificate {
+        position: relative;
+        transform: rotate(-2deg);
+        background: linear-gradient(to bottom right, #fdf5e6, #faebd7);
+        border: 2px dashed var(--dark-pink);
+    }
+
+    .certificate:before {
+        content: '★';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        font-size: 40px;
+        color: var(--gold);
+        animation: fadeIn 2s ease-in;
+    }
+
+    .certificate:after {
+        content: '★';
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        font-size: 40px;
+        color: var(--gold);
+        animation: fadeIn 2s ease-in;
+    }
+
+    .certificate ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .certificate li {
+        margin: 15px 0;
+        padding-left: 30px;
+        position: relative;
+        font-size: 1.2em;
+    }
+
+    .certificate li:before {
+        content: '❤';
+        position: absolute;
+        left: 0;
+        color: var(--rose);
+    }
+
+    /* Аудио плеер */
+    .audio-player {
+        background: linear-gradient(45deg, white, var(--pink));
+        border: 2px solid var(--gold);
+        position: relative;
+    }
+
+    .audio-player:before {
+        content: '♪';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        font-size: 40px;
+        color: var(--rose);
+    }
+
+    audio {
+        width: 100%;
+        height: 50px;
+    }
+
+    audio::-webkit-media-controls-panel {
+        background-color: var(--pink);
+    }
+
+    /* Декоративные элементы */
+    .decorative-hearts {
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+    }
+    .gallery-section:after {
+    content: '🌸';
+    position: absolute;
+    top: -30px;
+    right: 20px;
+    font-size: 50px;
+    color: #ff69b4;
+    opacity: 0.3;
+} 
+.gallery-item:nth-child(odd):hover {
+    transform: rotate(1deg);
+}
+
+.gallery-item:nth-child(even):hover {
+    transform: rotate(-1deg);
+}
+    .heart {
+        position: absolute;
+        color: var(--rose);
+        animation: float 3s ease-in-out infinite;
+    }
+
+    /* Адаптивные правки */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 3em !important;
+        }
+        
+        .certificate {
+            transform: rotate(0);
+            margin: 0 10px;
+        }
+    }
+</style>
+
